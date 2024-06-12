@@ -24,9 +24,9 @@
 
 > _Which Concepts Have I Covered_: <br/>
 
-01. _<h4></h4>_
-02. _<h4></h4>_
-03. _<h4></h4>_
+01. _<h4>I've used a ` MeshStandardMaterial ` for a realistic appearance. The textures will be `  PBR  ` textures ("Physically Based Rendering") and are compitable with MeshStandardMaterial.</h4>_
+02. _<h4>I established a "Group" for both the "House" and "Graves" to facilitate potential relocation or resizing of the entire structures.</h4>_
+03. _<h4>To create the elements of a 3D scene, utilize `  BoxGeometry  ` for the "walls" and "graves", `  ConeGeometry  ` for the "roof", `  PlaneGeometry  ` for the "ground" and "door", and `  SphereGeometry  ` for the "bushes".</h4>_
 04. _<h4></h4>_
 05. _<h4></h4>_
 06. _<h4></h4>_
@@ -36,7 +36,7 @@
 <br/><br/>
 
 <!-------- try it live -------->
-#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="" target="_blank"> &nbsp; _Shadows_ </a> 
+#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="" target="_blank"> &nbsp; _Haunted House_ </a> 
 
 <br/>
 
