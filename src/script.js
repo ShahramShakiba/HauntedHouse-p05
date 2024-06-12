@@ -71,7 +71,33 @@ bush4.scale.set(0.15, 0.15, 0.15);
 houseGroup.add(bush1, bush2, bush3, bush4);
 
 //============ Graves
+const graves = new THREE.Group();
+scene.add(graves);
 
+const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2);
+const gravesMaterial = new THREE.MeshStandardMaterial({ color: '#b2b6b1' });
+
+for (let i = 0; i < 30; i++) {
+  // spread all graves in a full circle
+  const angle = Math.random() * (Math.PI * 2);
+
+  // start from 3.5 meter to 6m randomly
+  const radius = 3.5 + Math.random() * 6;
+
+  // create a random angle on a "circle"
+  const x = Math.sin(angle) * radius;
+  const z = Math.cos(angle) * radius;
+
+  // Mesh
+  const grave = new THREE.Mesh(graveGeometry, gravesMaterial);
+  grave.position.set(x, Math.random() * 0.4, z);
+
+  grave.rotation.x = (Math.random() - 0.5) * 0.5; // -0.5 to +0.5
+  grave.rotation.y = (Math.random() - 0.5) * 0.5;
+  grave.rotation.z = (Math.random() - 0.5) * 0.5;
+
+  graves.add(grave);
+}
 
 //======================= Lights ========================
 // Ambient light
