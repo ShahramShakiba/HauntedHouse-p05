@@ -13,31 +13,65 @@ const textureLoader = new THREE.TextureLoader();
 //======== Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({ color: '' })
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
-//======== House Container
+//============ House Container
 const houseGroup = new THREE.Group();
 scene.add(houseGroup);
 
-//======== Walls
+//============ Walls
 const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({ color: '#ac8e82' })
 );
 walls.position.y += 2.5 / 2;
 houseGroup.add(walls);
 
-//======== Roof
+//============ Roof
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({ color: '#b35f45' })
 );
 roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 houseGroup.add(roof);
+
+//============ Door
+const door = new THREE.Mesh(
+  new THREE.PlaneGeometry(2.2, 2.2),
+  new THREE.MeshStandardMaterial({ color: '#aa7b7b' })
+);
+door.position.z = 4 / 1.99;
+door.position.y = 1;
+houseGroup.add(door);
+
+//============ Bushes
+const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
+const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
+
+const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush1.position.set(0.8, 0.2, 2.2);
+bush1.scale.set(0.5, 0.5, 0.5);
+
+const bush2 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush2.position.set(1.4, 0.1, 2.1);
+bush2.scale.set(0.25, 0.25, 0.25);
+
+const bush3 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush3.position.set(-0.8, 0.1, 2.2);
+bush3.scale.set(0.4, 0.4, 0.4);
+
+const bush4 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush4.position.set(-1, 0.05, 2.6);
+bush4.scale.set(0.15, 0.15, 0.15);
+
+houseGroup.add(bush1, bush2, bush3, bush4);
+
+//============ Graves
+
 
 //======================= Lights ========================
 // Ambient light
