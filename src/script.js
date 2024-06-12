@@ -10,36 +10,43 @@ const gui = new GUI(); // Debug
 const textureLoader = new THREE.TextureLoader();
 
 //======================= House ======================
-// Temporary sphere
-const sphere = new THREE.Mesh(
-  new THREE.SphereGeometry(1, 32, 32),
-  new THREE.MeshStandardMaterial({ roughness: 0.7 })
-);
-sphere.position.y = 1;
-scene.add(sphere);
-
-// Floor
+//======== Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial({ color: '#a9c388' })
+  new THREE.MeshStandardMaterial()
 );
 floor.rotation.x = -Math.PI * 0.5;
-floor.position.y = 0;
 scene.add(floor);
+
+//======== House Container
+const houseGroup = new THREE.Group();
+scene.add(houseGroup);
+
+//======== Walls
+const walls = new THREE.Mesh(
+  new THREE.BoxGeometry(4, 2.5, 4),
+  new THREE.MeshStandardMaterial()
+);
+walls.position.y += 2.5 / 2;
+houseGroup.add(walls);
+
+//======== Roof
+const roof = new THREE.Mesh(
+  new THREE.ConeGeometry(3.5, 1.5, 4),
+  new THREE.MeshStandardMaterial()
+);
+roof.position.y = 2.5 + 0.75;
+roof.rotation.y = Math.PI * 0.25;
+houseGroup.add(roof);
 
 //======================= Lights ========================
 // Ambient light
 const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
-gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 scene.add(ambientLight);
 
 // Directional light
 const moonLight = new THREE.DirectionalLight('#ffffff', 1.5);
-moonLight.position.set(4, 5, -2);
-gui.add(moonLight, 'intensity').min(0).max(1).step(0.001);
-gui.add(moonLight.position, 'x').min(-5).max(5).step(0.001);
-gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
-gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
+moonLight.position.set(3, 2, -8);
 scene.add(moonLight);
 
 //====================== Camera ==========================
@@ -83,9 +90,13 @@ window.addEventListener('resize', () => {
 });
 
 //==================== Animate ==========================
-const clock = new THREE.Clock();
+// current time in milliseconds with high precision
+let previousTime = performance.now();
+
 const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
+  const currentTime = performance.now();
+  const elapsedTime = (currentTime - previousTime) / 1000; // in seconds
+  previousTime = currentTime;
 
   // Update controls
   controls.update();
