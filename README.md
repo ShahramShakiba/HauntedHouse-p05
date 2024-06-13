@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="35" /> &nbsp; _Haunted House_ &nbsp; <img src="https://skillicons.dev/icons?i=threejs" height="35" alt="threejs logo"  />  <img src="https://skillicons.dev/icons?i=js" height="35" alt="javascript logo"  />
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="35" /> &nbsp; _Haunted House_ &nbsp; <img src="https://skillicons.dev/icons?i=threejs" height="35" alt="threejs logo"  />
 
 <!----------------------------------------- Description ---------------------------------------->
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Bubbles.png" alt="Bubbles" width="40" height="40" />&nbsp; _Description_
@@ -17,7 +17,7 @@
 <br/> <br/> 
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_, and _"Vanilla JavaScript"_ to create a visually stunning 3D Haunted House for experimenting with various effects.
+>> - It is crucial to grasp that the project incorporates _"Three.js"_ to create a visually stunning 3D Haunted House for experimenting with various effects.
 
 
 <br/><br/>
