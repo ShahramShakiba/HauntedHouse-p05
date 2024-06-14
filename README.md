@@ -17,7 +17,7 @@
 <br/> <br/> 
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_ to create a visually stunning 3D Haunted House for experimenting with various effects.
+>> - It is crucial to grasp that the project incorporates _"Three.js"_ to create a visually stunning 3D-Haunted-House for experimenting with various effects.
 
 
 <br/><br/>
