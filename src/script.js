@@ -4,7 +4,7 @@ import * as THREE from 'three';
 
 const canvas = document.querySelector('canvas.webgl'); // Canvas
 const scene = new THREE.Scene(); // Scene
-const gui = new GUI(); // Debug
+const gui = new GUI(); // Debug  
 
 //======================= Textures ======================
 const textureLoader = new THREE.TextureLoader();
