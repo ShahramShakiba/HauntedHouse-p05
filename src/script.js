@@ -13,7 +13,7 @@ const textureLoader = new THREE.TextureLoader();
 //======== Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial({ color: '' })
+  new THREE.MeshStandardMaterial()
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
@@ -25,7 +25,7 @@ scene.add(houseGroup);
 //============ Walls
 const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
-  new THREE.MeshStandardMaterial({ color: '#ac8e82' })
+  new THREE.MeshStandardMaterial()
 );
 walls.position.y += 2.5 / 2;
 houseGroup.add(walls);
@@ -33,7 +33,7 @@ houseGroup.add(walls);
 //============ Roof
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
-  new THREE.MeshStandardMaterial({ color: '#b35f45' })
+  new THREE.MeshStandardMaterial()
 );
 roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
@@ -42,7 +42,7 @@ houseGroup.add(roof);
 //============ Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
-  new THREE.MeshStandardMaterial({ color: '#aa7b7b' })
+  new THREE.MeshStandardMaterial()
 );
 door.position.z = 4 / 1.99;
 door.position.y = 1;
@@ -50,7 +50,7 @@ houseGroup.add(door);
 
 //============ Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
-const bushMaterial = new THREE.MeshStandardMaterial({ color: '#89c854' });
+const bushMaterial = new THREE.MeshStandardMaterial();
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush1.position.set(0.8, 0.2, 2.2);
@@ -71,11 +71,11 @@ bush4.scale.set(0.15, 0.15, 0.15);
 houseGroup.add(bush1, bush2, bush3, bush4);
 
 //============ Graves
-const graves = new THREE.Group();
-scene.add(graves);
+const gravesGroup = new THREE.Group();
+scene.add(gravesGroup);
 
 const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2);
-const gravesMaterial = new THREE.MeshStandardMaterial({ color: '#b2b6b1' });
+const gravesMaterial = new THREE.MeshStandardMaterial();
 
 for (let i = 0; i < 30; i++) {
   // spread all graves in a full circle
@@ -92,11 +92,12 @@ for (let i = 0; i < 30; i++) {
   const grave = new THREE.Mesh(graveGeometry, gravesMaterial);
   grave.position.set(x, Math.random() * 0.4, z);
 
-  grave.rotation.x = (Math.random() - 0.5) * 0.5; // -0.5 to +0.5
+  // graves stand towards forward and backwards (-0.5), then * 0.5: lower the effect of the way they are standing
+  grave.rotation.x = (Math.random() - 0.5) * 0.5;
   grave.rotation.y = (Math.random() - 0.5) * 0.5;
   grave.rotation.z = (Math.random() - 0.5) * 0.5;
 
-  graves.add(grave);
+  gravesGroup.add(grave);
 }
 
 //======================= Lights ========================
