@@ -5,7 +5,7 @@
 
 > To begin with, it is important to note that, this project have been sourced from an exceptional `Three.js Journey` Course. <br/>
  
-> 👤 Instructed by a _proficient_ and _expert educator_, ` "Bruno Simon" ` .
+> 👤 Instructed by a _proficient_ and _expert educator_, ` "Bruno Simon" ` . 
 
  <br/>
 
