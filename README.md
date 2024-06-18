@@ -5,7 +5,7 @@
 
 > To begin with, it is important to note that, this project have been sourced from an exceptional `Three.js Journey` Course. <br/>
  
-> 👤 Instructed by a _proficient_ and _expert educator_, ` "Bruno Simon" ` . 
+### 👤 Instructed by a _proficient_ and _expert educator_, `  "Bruno Simon"  ` . 
 
  <br/>
 
@@ -27,8 +27,8 @@
 01. _<h4>I've used a ` MeshStandardMaterial ` for a realistic appearance. The textures will be `  PBR  ` textures ("Physically Based Rendering") and are compitable with MeshStandardMaterial.</h4>_
 02. _<h4>I established a "Group" for both the "House" and "Graves" to facilitate potential relocation or resizing of the entire structures.</h4>_
 03. _<h4>To create the elements of a 3D scene, utilize `  BoxGeometry  ` for the "walls" and "graves", `  ConeGeometry  ` for the "roof", `  PlaneGeometry  ` for the "ground" and "door", and `  SphereGeometry  ` for the "bushes".</h4>_
-04. _<h4></h4>_
-05. _<h4></h4>_
+04. _<h4>Download Textures from the `  Poly Haven  ` site</h4>_
+05. _<h4>First apply the Texture to the Floor</h4>_
 06. _<h4></h4>_
 07. _<h4></h4>_
 
