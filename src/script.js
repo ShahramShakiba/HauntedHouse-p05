@@ -58,8 +58,29 @@ const wallNormalTexture = textureLoader.load(
 
 wallColorTexture.colorSpace = THREE.SRGBColorSpace;
 
+//============= Roof-Texture
+const roofColorTexture = textureLoader.load(
+  './roof/roof_slates_02_1k/roof_slates_02_diff_1k.jpg'
+);
+const roofARMTexture = textureLoader.load(
+  './roof/roof_slates_02_1k/roof_slates_02_arm_1k.jpg'
+);
+const roofNormalTexture = textureLoader.load(
+  './roof/roof_slates_02_1k/roof_slates_02_nor_gl_1k.jpg'
+);
+
+roofColorTexture.colorSpace = THREE.SRGBColorSpace;
+
+roofColorTexture.repeat.set(3, 1);
+roofARMTexture.repeat.set(3, 1);
+roofNormalTexture.repeat.set(3, 1);
+
+roofColorTexture.wrapS = THREE.RepeatWrapping;
+roofARMTexture.wrapS = THREE.RepeatWrapping;
+roofNormalTexture.wrapS = THREE.RepeatWrapping;
+
 //======================= House ======================
-//============= Floor
+//================ Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(25, 25, 100, 100),
   new THREE.MeshStandardMaterial({
@@ -96,7 +117,7 @@ floorGUI
   .step(0.001)
   .name('Floor displacementBias');
 
-//=================== Walls
+//====================== Walls
 // House Container
 const houseGroup = new THREE.Group();
 scene.add(houseGroup);
@@ -114,16 +135,22 @@ const walls = new THREE.Mesh(
 walls.position.y += 2.5 / 2;
 houseGroup.add(walls);
 
-//=================== Roof
+//====================== Roof
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({
+    map: roofColorTexture,
+    aoMap: roofARMTexture,
+    roughnessMap: roofARMTexture,
+    metalnessMap: roofARMTexture,
+    normalMap: roofNormalTexture,
+  })
 );
 roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 houseGroup.add(roof);
 
-//=================== Door
+//===================== Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
   new THREE.MeshStandardMaterial()
@@ -132,7 +159,7 @@ door.position.z = 2 + 0.01;
 door.position.y = 1;
 houseGroup.add(door);
 
-//=================== Bushes
+//==================== Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial();
 
@@ -196,7 +223,7 @@ for (let i = 0; i < 30; i++) {
 const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
 scene.add(ambientLight);
 
-const moonLight = new THREE.DirectionalLight('#ffffff', 2.5);
+const moonLight = new THREE.DirectionalLight('#ffffff', 1.5);
 moonLight.position.set(3, 2, -8);
 scene.add(moonLight);
 
