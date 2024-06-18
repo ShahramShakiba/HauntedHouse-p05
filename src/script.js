@@ -43,9 +43,9 @@ houseGroup.add(roof);
 //================= Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({ color: 'red' })
 );
-door.position.z = 4 / 1.99;
+door.position.z = 2 + 0.01;
 door.position.y = 1;
 houseGroup.add(door);
 
@@ -54,22 +54,30 @@ const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial();
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
-bush1.position.set(0.8, 0.2, 2.2);
+bush1.position.set(1.45, 0.2, 2.2);
 bush1.scale.set(0.5, 0.5, 0.5);
 
 const bush2 = new THREE.Mesh(bushGeometry, bushMaterial);
-bush2.position.set(1.4, 0.1, 2.1);
-bush2.scale.set(0.25, 0.25, 0.25);
+bush2.position.set(2.05, 0.1, 2.1);
+bush2.scale.set(0.35, 0.35, 0.35);
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial);
-bush3.position.set(-0.8, 0.1, 2.2);
+bush3.position.set(-1.2, 0.1, 2.2);
 bush3.scale.set(0.4, 0.4, 0.4);
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush4.position.set(-1, 0.05, 2.6);
-bush4.scale.set(0.15, 0.15, 0.15);
+bush4.scale.set(0.25, 0.25, 0.25);
 
-houseGroup.add(bush1, bush2, bush3, bush4);
+const bush5 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush5.position.set(1.9, 0.05, 2.55);
+bush5.scale.set(0.25, 0.25, 0.25);
+
+const bush6 = new THREE.Mesh(bushGeometry, bushMaterial);
+bush6.position.set(2.2, 0.2, -1);
+bush6.scale.set(0.35, 0.35, 0.35);
+
+houseGroup.add(bush1, bush2, bush3, bush4, bush5, bush6);
 
 //================= Graves
 const gravesGroup = new THREE.Group();
@@ -82,8 +90,8 @@ for (let i = 0; i < 30; i++) {
   // spread all graves in a full circle
   const angle = Math.random() * (Math.PI * 2);
 
-  // start from 3.5 meter to 6m randomly
-  const radius = 3.5 + Math.random() * 6;
+  // start from 3.2 meter to 4.5m randomly
+  const radius = 3.2 + Math.random() * 4.5;
 
   // create a random angle on a "circle"
   const x = Math.sin(angle) * radius;
@@ -93,7 +101,7 @@ for (let i = 0; i < 30; i++) {
   const grave = new THREE.Mesh(graveGeometry, gravesMaterial);
   grave.position.set(x, Math.random() * 0.4, z);
 
-  // graves stand towards forward and backwards (-0.5), then * 0.5: lower the effect of the way they are standing
+  // graves should stand forward and backwards (-0.5), then * 0.5: lower the effect of the way they are standing
   grave.rotation.x = (Math.random() - 0.5) * 0.5;
   grave.rotation.y = (Math.random() - 0.5) * 0.5;
   grave.rotation.z = (Math.random() - 0.5) * 0.5;
