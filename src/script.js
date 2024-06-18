@@ -12,6 +12,7 @@ const floorGUI = gui.addFolder('Floor').close();
 //======================= Textures ===================
 const textureLoader = new THREE.TextureLoader();
 
+//============= Floor-Texture
 const floorAlphaTexture = textureLoader.load('./floor/alpha.jpg');
 const floorColorTexture = textureLoader.load(
   './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg'
@@ -44,14 +45,27 @@ floorARMTexture.wrapT = THREE.RepeatWrapping;
 floorNormalTexture.wrapT = THREE.RepeatWrapping;
 floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
 
+//============= Wall-Texture
+const wallColorTexture = textureLoader.load(
+  './wall/castle_brick_broken_06_1k/castle_brick_broken_06_diff_1k.jpg'
+);
+const wallARMTexture = textureLoader.load(
+  './wall/castle_brick_broken_06_1k/castle_brick_broken_06_arm_1k.jpg'
+);
+const wallNormalTexture = textureLoader.load(
+  './wall/castle_brick_broken_06_1k/castle_brick_broken_06_nor_gl_1k.jpg'
+);
+
+wallColorTexture.colorSpace = THREE.SRGBColorSpace;
+
 //======================= House ======================
-//=== Floor
+//============= Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(25, 25, 100, 100),
   new THREE.MeshStandardMaterial({
     alphaMap: floorAlphaTexture,
     transparent: true,
-    
+
     map: floorColorTexture,
     aoMap: floorARMTexture, // Get "red" value in the shaders - R
     roughnessMap: floorARMTexture, // Get "green" - G
@@ -82,19 +96,25 @@ floorGUI
   .step(0.001)
   .name('Floor displacementBias');
 
-//=== House Container
+//=================== Walls
+// House Container
 const houseGroup = new THREE.Group();
 scene.add(houseGroup);
 
-//================= Walls
 const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
-  new THREE.MeshStandardMaterial()
+  new THREE.MeshStandardMaterial({
+    map: wallColorTexture,
+    aoMap: wallARMTexture,
+    roughnessMap: wallARMTexture,
+    metalnessMap: wallARMTexture,
+    normalMap: wallNormalTexture,
+  })
 );
 walls.position.y += 2.5 / 2;
 houseGroup.add(walls);
 
-//================= Roof
+//=================== Roof
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
   new THREE.MeshStandardMaterial()
@@ -103,7 +123,7 @@ roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 houseGroup.add(roof);
 
-//================= Door
+//=================== Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
   new THREE.MeshStandardMaterial()
@@ -112,7 +132,7 @@ door.position.z = 2 + 0.01;
 door.position.y = 1;
 houseGroup.add(door);
 
-//================ Bushes
+//=================== Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial();
 
@@ -142,7 +162,7 @@ bush6.scale.set(0.35, 0.35, 0.35);
 
 houseGroup.add(bush1, bush2, bush3, bush4, bush5, bush6);
 
-//================= Graves
+//=================== Graves
 const gravesGroup = new THREE.Group();
 scene.add(gravesGroup);
 
