@@ -1,20 +1,55 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { Timer } from 'three/examples/jsm/Addons.js';
 import GUI from 'lil-gui';
 import * as THREE from 'three';
-import { Timer } from 'three/examples/jsm/Addons.js';
 
-const canvas = document.querySelector('canvas.webgl'); // Canvas
-const scene = new THREE.Scene(); // Scene
-const gui = new GUI(); // Debug
+const scene = new THREE.Scene();
+const gui = new GUI();
+const canvas = document.querySelector('canvas.webgl');
 
-//======================= Textures ======================
+//======================= Textures ===================
 const textureLoader = new THREE.TextureLoader();
+
+const floorAlphaTexture = textureLoader.load('./floor/alpha.jpg');
+const floorColorTexture = textureLoader.load(
+  './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg'
+);
+const floorARMTexture = textureLoader.load(
+  './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_arm_1k.jpg'
+); // Ambient-occlusion| Roughness| Metalness
+const floorNormalTexture = textureLoader.load(
+  './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_nor_gl_1k.jpg'
+);
+const floorDisplacementTexture = textureLoader.load(
+  './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg'
+);
+
+// Texture is too big - reduce it, then repeat it
+floorColorTexture.repeat.set(8, 8);
+floorARMTexture.repeat.set(8, 8);
+floorNormalTexture.repeat.set(8, 8);
+floorDisplacementTexture.repeat.set(8, 8);
+
+floorColorTexture.wrapS = THREE.RepeatWrapping;
+floorARMTexture.wrapS = THREE.RepeatWrapping;
+floorNormalTexture.wrapS = THREE.RepeatWrapping;
+floorDisplacementTexture.wrapS = THREE.RepeatWrapping;
+
+floorColorTexture.wrapT = THREE.RepeatWrapping;
+floorARMTexture.wrapT = THREE.RepeatWrapping;
+floorNormalTexture.wrapT = THREE.RepeatWrapping;
+floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
 
 //======================= House ======================
 //=== Floor
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(20, 20),
-  new THREE.MeshStandardMaterial()
+  new THREE.PlaneGeometry(25, 25),
+  new THREE.MeshStandardMaterial({
+    alphaMap: floorAlphaTexture,
+    transparent: true,
+
+    map: floorColorTexture,
+  })
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
@@ -43,7 +78,7 @@ houseGroup.add(roof);
 //================= Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
-  new THREE.MeshStandardMaterial({ color: 'red' })
+  new THREE.MeshStandardMaterial()
 );
 door.position.z = 2 + 0.01;
 door.position.y = 1;
