@@ -2,10 +2,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Timer } from 'three/examples/jsm/Addons.js';
 import GUI from 'lil-gui';
 import * as THREE from 'three';
+import { normalMap } from 'three/examples/jsm/nodes/Nodes.js';
 
 const scene = new THREE.Scene();
-const gui = new GUI();
 const canvas = document.querySelector('canvas.webgl');
+const gui = new GUI().title('Haunted House');
+const floorGUI = gui.addFolder('Floor').close();
 
 //======================= Textures ===================
 const textureLoader = new THREE.TextureLoader();
@@ -23,6 +25,8 @@ const floorNormalTexture = textureLoader.load(
 const floorDisplacementTexture = textureLoader.load(
   './floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg'
 );
+
+floorColorTexture.colorSpace = THREE.SRGBColorSpace;
 
 // Texture is too big - reduce it, then repeat it
 floorColorTexture.repeat.set(8, 8);
@@ -43,16 +47,40 @@ floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
 //======================= House ======================
 //=== Floor
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(25, 25),
+  new THREE.PlaneGeometry(25, 25, 100, 100),
   new THREE.MeshStandardMaterial({
     alphaMap: floorAlphaTexture,
     transparent: true,
-
+    
     map: floorColorTexture,
+    aoMap: floorARMTexture, // Get "red" value in the shaders - R
+    roughnessMap: floorARMTexture, // Get "green" - G
+    metalnessMap: floorARMTexture, // Get "blue" - B
+    normalMap: floorNormalTexture,
+
+    // Since displacementMap will move the actual vertices we need to add more vertices (..., ..., 100, 100)
+    displacementMap: floorDisplacementTexture,
+    displacementScale: 0.3,
+
+    // Still plane looks too high| offset whole displacement down
+    displacementBias: -0.15,
   })
 );
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
+
+floorGUI
+  .add(floor.material, 'displacementScale')
+  .min(0)
+  .max(1)
+  .step(0.001)
+  .name('Floor displacementScale');
+floorGUI
+  .add(floor.material, 'displacementBias')
+  .min(-1)
+  .max(1)
+  .step(0.001)
+  .name('Floor displacementBias');
 
 //=== House Container
 const houseGroup = new THREE.Group();
@@ -148,7 +176,7 @@ for (let i = 0; i < 30; i++) {
 const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
 scene.add(ambientLight);
 
-const moonLight = new THREE.DirectionalLight('#ffffff', 1.5);
+const moonLight = new THREE.DirectionalLight('#ffffff', 2.5);
 moonLight.position.set(3, 2, -8);
 scene.add(moonLight);
 
