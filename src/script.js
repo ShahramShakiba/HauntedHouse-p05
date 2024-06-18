@@ -1,16 +1,17 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import GUI from 'lil-gui';
 import * as THREE from 'three';
+import { Timer } from 'three/examples/jsm/Addons.js';
 
 const canvas = document.querySelector('canvas.webgl'); // Canvas
 const scene = new THREE.Scene(); // Scene
-const gui = new GUI(); // Debug  
+const gui = new GUI(); // Debug
 
 //======================= Textures ======================
 const textureLoader = new THREE.TextureLoader();
 
 //======================= House ======================
-//======== Floor
+//=== Floor
 const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
   new THREE.MeshStandardMaterial()
@@ -18,11 +19,11 @@ const floor = new THREE.Mesh(
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
-//============ House Container
+//=== House Container
 const houseGroup = new THREE.Group();
 scene.add(houseGroup);
 
-//============ Walls
+//================= Walls
 const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 2.5, 4),
   new THREE.MeshStandardMaterial()
@@ -30,7 +31,7 @@ const walls = new THREE.Mesh(
 walls.position.y += 2.5 / 2;
 houseGroup.add(walls);
 
-//============ Roof
+//================= Roof
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3.5, 1.5, 4),
   new THREE.MeshStandardMaterial()
@@ -39,7 +40,7 @@ roof.position.y = 2.5 + 0.75;
 roof.rotation.y = Math.PI * 0.25;
 houseGroup.add(roof);
 
-//============ Door
+//================= Door
 const door = new THREE.Mesh(
   new THREE.PlaneGeometry(2.2, 2.2),
   new THREE.MeshStandardMaterial()
@@ -48,7 +49,7 @@ door.position.z = 4 / 1.99;
 door.position.y = 1;
 houseGroup.add(door);
 
-//============ Bushes
+//================ Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
 const bushMaterial = new THREE.MeshStandardMaterial();
 
@@ -70,7 +71,7 @@ bush4.scale.set(0.15, 0.15, 0.15);
 
 houseGroup.add(bush1, bush2, bush3, bush4);
 
-//============ Graves
+//================= Graves
 const gravesGroup = new THREE.Group();
 scene.add(gravesGroup);
 
@@ -101,11 +102,9 @@ for (let i = 0; i < 30; i++) {
 }
 
 //======================= Lights ========================
-// Ambient light
 const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
 scene.add(ambientLight);
 
-// Directional light
 const moonLight = new THREE.DirectionalLight('#ffffff', 1.5);
 moonLight.position.set(3, 2, -8);
 scene.add(moonLight);
@@ -137,35 +136,25 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 //==================== Resize Listener ===================
 window.addEventListener('resize', () => {
-  // Update sizes
   width = window.innerWidth;
   height = window.innerHeight;
 
-  // Update camera
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
 
-  // Update renderer
   renderer.setSize(width, height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
 //==================== Animate ==========================
-// current time in milliseconds with high precision
-let previousTime = performance.now();
+const timer = new Timer();
 
 const tick = () => {
-  const currentTime = performance.now();
-  const elapsedTime = (currentTime - previousTime) / 1000; // in seconds
-  previousTime = currentTime;
+  timer.update();
+  const elapsedTime = timer.getElapsed();
 
-  // Update controls
   controls.update();
-
-  // Render
   renderer.render(scene, camera);
-
-  // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
 
