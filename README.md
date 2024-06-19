@@ -13,11 +13,14 @@
 
 <br/><br/>
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="25" height="25" /> Feel free to delve into the code as it has been written in a straightforward manner for easy understanding. <br/> By doing so, you can gain insights on how to incorporate .... into the scene.
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="25" height="25" /> Feel free to delve into the code as it has been written in a straightforward manner for easy understanding.
 <br/> <br/> 
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_ to create a visually stunning 3D-Haunted-House for experimenting with various effects.
+>> ### It is crucial to grasp that the project can be used in:
+>> - The "Gaming" industry could find value in this project for creating immersive and atmospheric ` game environments `.
+>> - The "Entertainment" industry, including ` theme parks ` or ` virtual reality ` experiences, could also benefit from the realistic and spooky atmosphere you have created.
+>> - Additionally, "Architectural firms" might find inspiration in your 3D design skills for creating unique and engaging building ` models `.
 
 
 <br/><br/>
@@ -40,7 +43,7 @@
 <br/><br/>
 
 <!-------- try it live -------->
-#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="" target="_blank"> &nbsp; _Haunted House_ </a> 
+#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="https://haunted-house-threejs-bfcsem8wj-shahramshakibas-projects.vercel.app/" target="_blank"> &nbsp; _Haunted House_ </a> 
 
 <br/>
 
