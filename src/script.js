@@ -356,6 +356,47 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
+//======================= Shadows =========================
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+moonLight.castShadow = true;
+ghost1.castShadow = true;
+ghost2.castShadow = true;
+ghost3.castShadow = true;
+
+floor.receiveShadow = true;
+walls.receiveShadow = true;
+walls.castShadow = true;
+roof.castShadow = true;
+
+for (const grave of gravesGroup.children) {
+  grave.castShadow = true;
+  grave.receiveShadow = true;
+}
+
+// Mapping
+moonLight.shadow.mapSize.width = 256;
+moonLight.shadow.mapSize.height = 256;
+moonLight.shadow.camera.top = 8;
+moonLight.shadow.camera.right = 8;
+moonLight.shadow.camera.bottom = -8;
+moonLight.shadow.camera.left = -8;
+moonLight.shadow.camera.near = 1;
+moonLight.shadow.camera.far = 20;
+
+ghost1.shadow.mapSize.width = 256;
+ghost1.shadow.mapSize.height = 256;
+ghost1.shadow.camera.far = 10;
+
+ghost2.shadow.mapSize.width = 256;
+ghost2.shadow.mapSize.height = 256;
+ghost2.shadow.camera.far = 10;
+
+ghost3.shadow.mapSize.width = 256;
+ghost3.shadow.mapSize.height = 256;
+ghost3.shadow.camera.far = 10;
+
 //==================== Animate ==========================
 const timer = new Timer();
 
@@ -363,7 +404,7 @@ const tick = () => {
   timer.update();
   const elapsedTime = timer.getElapsed();
 
-  //===== Ghost 01
+  //== Ghost 01
   const ghost1Angle = elapsedTime * 0.5;
   ghost1.position.x = Math.cos(ghost1Angle) * 4;
   ghost1.position.z = Math.sin(ghost1Angle) * 4;
@@ -374,7 +415,7 @@ const tick = () => {
     Math.sin(ghost1Angle * 2.34) *
     Math.sin(ghost1Angle * 3.45);
 
-  //===== Ghost 02
+  //== Ghost 02
   const ghost2Angle = -elapsedTime * 0.38;
   ghost2.position.x = Math.cos(ghost2Angle) * 5;
   ghost2.position.z = Math.sin(ghost2Angle) * 5;
@@ -383,7 +424,7 @@ const tick = () => {
     Math.sin(ghost2Angle * 2.34) *
     Math.sin(ghost2Angle * 3.45);
 
-  //===== Ghost 03
+  //== Ghost 03
   const ghost3Angle = elapsedTime * 0.23;
   ghost3.position.x = Math.cos(ghost3Angle) * 6.5;
   ghost3.position.z = Math.sin(ghost3Angle) * 6.5;
