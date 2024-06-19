@@ -79,6 +79,27 @@ roofColorTexture.wrapS = THREE.RepeatWrapping;
 roofARMTexture.wrapS = THREE.RepeatWrapping;
 roofNormalTexture.wrapS = THREE.RepeatWrapping;
 
+//============= Bush-Texture
+const bushColorTexture = textureLoader.load(
+  './bush/leaves_forest_ground_1k/leaves_forest_ground_diff_1k.jpg'
+);
+const bushARMTexture = textureLoader.load(
+  './bush/leaves_forest_ground_1k/leaves_forest_ground_arm_1k.jpg'
+);
+const bushNormalTexture = textureLoader.load(
+  './bush/leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.jpg'
+);
+
+bushColorTexture.colorSpace = THREE.SRGBColorSpace;
+
+bushColorTexture.repeat.set(2, 1);
+bushARMTexture.repeat.set(2, 1);
+bushNormalTexture.repeat.set(2, 1);
+
+bushColorTexture.wrapS = THREE.RepeatWrapping;
+bushARMTexture.wrapS = THREE.RepeatWrapping;
+bushNormalTexture.wrapS = THREE.RepeatWrapping;
+
 //======================= House ======================
 //================ Floor
 const floor = new THREE.Mesh(
@@ -161,31 +182,44 @@ houseGroup.add(door);
 
 //==================== Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16);
-const bushMaterial = new THREE.MeshStandardMaterial();
+const bushMaterial = new THREE.MeshStandardMaterial({
+  color: '#ccffcc',
+  map: bushColorTexture,
+  aoMap: bushARMTexture,
+  roughnessMap: bushARMTexture,
+  metalnessMap: bushARMTexture,
+  normalMap: bushNormalTexture,
+});
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush1.position.set(1.45, 0.2, 2.2);
 bush1.scale.set(0.5, 0.5, 0.5);
+bush1.rotation.x = -0.75; // to hide the stretching in the center
 
 const bush2 = new THREE.Mesh(bushGeometry, bushMaterial);
-bush2.position.set(2.05, 0.1, 2.1);
+bush2.position.set(2.05, 0.05, 2.1);
 bush2.scale.set(0.35, 0.35, 0.35);
+bush2.rotation.x = -0.75;
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush3.position.set(-1.2, 0.1, 2.2);
 bush3.scale.set(0.4, 0.4, 0.4);
+bush3.rotation.x = -0.75;
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush4.position.set(-1, 0.05, 2.6);
 bush4.scale.set(0.25, 0.25, 0.25);
+bush4.rotation.x = -0.75;
 
 const bush5 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush5.position.set(1.9, 0.05, 2.55);
 bush5.scale.set(0.25, 0.25, 0.25);
+bush5.rotation.x = -0.75;
 
 const bush6 = new THREE.Mesh(bushGeometry, bushMaterial);
 bush6.position.set(2.2, 0.2, -1);
 bush6.scale.set(0.35, 0.35, 0.35);
+bush6.rotation.x = -0.75;
 
 houseGroup.add(bush1, bush2, bush3, bush4, bush5, bush6);
 
