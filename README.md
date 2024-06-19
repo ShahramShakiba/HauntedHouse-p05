@@ -28,7 +28,7 @@
 02. _<h4>I established a "Group" for both the "House" and "Graves" to facilitate potential relocation or resizing of the entire structures.</h4>_
 03. _<h4>To create the elements of a 3D scene, utilize `  BoxGeometry  ` for the "walls" and "graves", `  ConeGeometry  ` for the "roof", `  PlaneGeometry  ` for the "ground" and "door", and `  SphereGeometry  ` for the "bushes".</h4>_
 04. _<h4>Download Textures from the `  Poly Haven  ` site</h4>_
-05. _<h4>First apply the Texture to the Floor</h4>_
+05. _<h4>First apply the Texture to the Floor, then to the Walls, Roof,</h4>_
 06. _<h4></h4>_
 07. _<h4></h4>_
 
