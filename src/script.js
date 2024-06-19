@@ -426,17 +426,24 @@ sky.material.uniforms['sunPosition'].value.set(0.3, -0.038, -0.95);
 scene.fog = new THREE.FogExp2('#02343f', 0.1);
 
 //======================= Sound =========================
+// Listen the audio in the scene
 const audioListener = new THREE.AudioListener();
 camera.add(audioListener);
 
 const sound = new THREE.Audio(audioListener);
 
 const audioLoader = new THREE.AudioLoader();
-audioLoader.load('./sound/spooky.m4a', (buffer) => {
+audioLoader.load('./sound/spooky.mp3', (buffer) => {
   sound.setBuffer(buffer);
   sound.setLoop(true);
   sound.setVolume(0.5);
-  sound.play();
+  
+  // Attach sound playback to a user interaction
+  document.addEventListener('click', () => {
+    if (!sound.isPlaying) {
+      sound.play();
+    }
+  });
 });
 
 //==================== Animate ========================
