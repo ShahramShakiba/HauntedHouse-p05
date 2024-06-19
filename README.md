@@ -13,11 +13,14 @@
 
 <br/><br/>
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="25" height="25" /> Feel free to delve into the code as it has been written in a straightforward manner for easy understanding. <br/> By doing so, you can gain insights on how to incorporate .... into the scene.
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="25" height="25" /> Feel free to delve into the code as it has been written in a straightforward manner for easy understanding.
 <br/> <br/> 
 
 > [!IMPORTANT]
->> - It is crucial to grasp that the project incorporates _"Three.js"_ to create a visually stunning 3D-Haunted-House for experimenting with various effects.
+>> ### It is crucial to grasp that the project can be used in:
+>> - The "Gaming" industry could find value in this project for creating immersive and atmospheric ` game environments `.
+>> - The "Entertainment" industry, including ` theme parks ` or ` virtual reality ` experiences, could also benefit from the realistic and spooky atmosphere you have created.
+>> - Additionally, "Architectural firms" might find inspiration in your 3D design skills for creating unique and engaging building ` models `.
 
 
 <br/><br/>
@@ -28,15 +31,19 @@
 02. _<h4>I established a "Group" for both the "House" and "Graves" to facilitate potential relocation or resizing of the entire structures.</h4>_
 03. _<h4>To create the elements of a 3D scene, utilize `  BoxGeometry  ` for the "walls" and "graves", `  ConeGeometry  ` for the "roof", `  PlaneGeometry  ` for the "ground" and "door", and `  SphereGeometry  ` for the "bushes".</h4>_
 04. _<h4>Download Textures from the `  Poly Haven  ` site</h4>_
-05. _<h4>First apply the Texture to the Floor, then to the Walls, Roof,</h4>_
-06. _<h4></h4>_
-07. _<h4></h4>_
+05. _<h4>Begin by applying the texture to the "Floor", followed by the "Walls", "Roof", "Bushes", "Graves", and "Door".</h4>_
+06. _<h4>Adjusting the lighting settings to replicate the ambiance of `  moonlight  ` and installing a separate light for the door.</h4>_
+07. _<h4>Utilizing PointLight to create `  Ghostly  ` effects that pass through walls and floors, then animating these elements to evoke a spooky atmosphere.</h4>_
+08. _<h4>Utilizing the techniques of casting shadows and receiving `  Shadows  ` to enhance the realism of the environment.</h4>_
+09. _<h4>Utilizing WebGL shaders from the Three.js library to enhance environmental realism through `  Sky  `rendering.</h4>_
+10. _<h4>Generate ` Fog  ` effects using the FogExp2 function and manipulate the density parameter to enhance the realism of the environment.</h4>_
+11. _<h4>Enhancing `  Texture Optimization  ` through the utilization of Cloud-Convert's online platform for converting .jpg files to .webp format.</h4>_
 
  
 <br/><br/>
 
 <!-------- try it live -------->
-#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="" target="_blank"> &nbsp; _Haunted House_ </a> 
+#### _Give it a go in real-time and give me a Star_ &nbsp; <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Glowing%20Star.png" alt="Glowing Star" width="25"  /> <a href="https://haunted-house-threejs-bfcsem8wj-shahramshakibas-projects.vercel.app/" target="_blank"> &nbsp; _Haunted House_ </a> 
 
 <br/>
 
