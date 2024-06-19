@@ -6,8 +6,8 @@ import { Sky } from 'three/examples/jsm/Addons.js';
 
 const canvas = document.querySelector('canvas.webgl');
 const scene = new THREE.Scene();
-const gui = new GUI().title('Haunted House');
-const floorGUI = gui.addFolder('Floor').close();
+// const gui = new GUI().title('Haunted House');
+// const floorGUI = gui.addFolder('Floor').close();
 
 //======================= Textures ===================
 const textureLoader = new THREE.TextureLoader();
@@ -155,18 +155,18 @@ const floor = new THREE.Mesh(
 floor.rotation.x = -Math.PI * 0.5;
 scene.add(floor);
 
-floorGUI
-  .add(floor.material, 'displacementScale')
-  .min(0)
-  .max(1)
-  .step(0.001)
-  .name('Floor displacementScale');
-floorGUI
-  .add(floor.material, 'displacementBias')
-  .min(-1)
-  .max(1)
-  .step(0.001)
-  .name('Floor displacementBias');
+// floorGUI
+//   .add(floor.material, 'displacementScale')
+//   .min(0)
+//   .max(1)
+//   .step(0.001)
+//   .name('Floor displacementScale');
+// floorGUI
+//   .add(floor.material, 'displacementBias')
+//   .min(-1)
+//   .max(1)
+//   .step(0.001)
+//   .name('Floor displacementBias');
 
 //====================== Walls
 // House Container
@@ -315,7 +315,7 @@ houseGroup.add(doorLight);
 const flickerLight = () => {
   const minIntensity = 0.1;
   const maxIntensity = 5;
-  const flickerSpeed = 280;
+  const flickerSpeed = 300;
 
   // Randomly change the light's intensity
   doorLight.intensity =
@@ -454,7 +454,7 @@ const tick = () => {
   const elapsedTime = timer.getElapsed();
 
   //== Ghost 01
-  const ghost1Angle = elapsedTime * 0.4;
+  const ghost1Angle = elapsedTime * 0.45;
   ghost1.position.x = Math.cos(ghost1Angle) * 4;
   ghost1.position.z = Math.sin(ghost1Angle) * 4;
 
@@ -465,7 +465,7 @@ const tick = () => {
     Math.sin(ghost1Angle * 3.45);
 
   //== Ghost 02
-  const ghost2Angle = -elapsedTime * 0.3;
+  const ghost2Angle = -elapsedTime * 0.35;
   ghost2.position.x = Math.cos(ghost2Angle) * 5;
   ghost2.position.z = Math.sin(ghost2Angle) * 5;
   ghost2.position.y =
@@ -474,7 +474,7 @@ const tick = () => {
     Math.sin(ghost2Angle * 3.45);
 
   //== Ghost 03
-  const ghost3Angle = elapsedTime * 0.2;
+  const ghost3Angle = elapsedTime * 0.25;
   ghost3.position.x = Math.cos(ghost3Angle) * 6.5;
   ghost3.position.z = Math.sin(ghost3Angle) * 6.5;
   ghost3.position.y =
