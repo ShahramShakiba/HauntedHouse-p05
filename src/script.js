@@ -397,7 +397,7 @@ ghost3.shadow.mapSize.width = 256;
 ghost3.shadow.mapSize.height = 256;
 ghost3.shadow.camera.far = 10;
 
-//======================= Shadows =========================
+//======================= Sky =========================
 const sky = new Sky();
 sky.scale.set(100, 100, 100);
 scene.add(sky);
@@ -408,7 +408,10 @@ sky.material.uniforms['mieCoefficient'].value = 0.1;
 sky.material.uniforms['mieDirectionalG'].value = 0.95;
 sky.material.uniforms['sunPosition'].value.set(0.3, -0.038, -0.95);
 
-//==================== Animate ==========================
+//======================= Fog =========================
+scene.fog = new THREE.FogExp2('#02343f', 0.1);
+
+//==================== Animate ========================
 const timer = new Timer();
 
 const tick = () => {
