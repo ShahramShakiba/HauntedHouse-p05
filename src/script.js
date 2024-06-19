@@ -2,10 +2,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Timer } from 'three/examples/jsm/Addons.js';
 import GUI from 'lil-gui';
 import * as THREE from 'three';
-import { normalMap } from 'three/examples/jsm/nodes/Nodes.js';
+import { Sky } from 'three/examples/jsm/Addons.js';
 
-const scene = new THREE.Scene();
 const canvas = document.querySelector('canvas.webgl');
+const scene = new THREE.Scene();
 const gui = new GUI().title('Haunted House');
 const floorGUI = gui.addFolder('Floor').close();
 
@@ -396,6 +396,17 @@ ghost2.shadow.camera.far = 10;
 ghost3.shadow.mapSize.width = 256;
 ghost3.shadow.mapSize.height = 256;
 ghost3.shadow.camera.far = 10;
+
+//======================= Shadows =========================
+const sky = new Sky();
+sky.scale.set(100, 100, 100);
+scene.add(sky);
+
+sky.material.uniforms['turbidity'].value = 10;
+sky.material.uniforms['rayleigh'].value = 3;
+sky.material.uniforms['mieCoefficient'].value = 0.1;
+sky.material.uniforms['mieDirectionalG'].value = 0.95;
+sky.material.uniforms['sunPosition'].value.set(0.3, -0.038, -0.95);
 
 //==================== Animate ==========================
 const timer = new Timer();
