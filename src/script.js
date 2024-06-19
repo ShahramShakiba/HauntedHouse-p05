@@ -425,6 +425,20 @@ sky.material.uniforms['sunPosition'].value.set(0.3, -0.038, -0.95);
 //======================= Fog =========================
 scene.fog = new THREE.FogExp2('#02343f', 0.1);
 
+//======================= Sound =========================
+const audioListener = new THREE.AudioListener();
+camera.add(audioListener);
+
+const sound = new THREE.Audio(audioListener);
+
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load('./sound/spooky.m4a', (buffer) => {
+  sound.setBuffer(buffer);
+  sound.setLoop(true);
+  sound.setVolume(0.5);
+  sound.play();
+});
+
 //==================== Animate ========================
 const timer = new Timer();
 
