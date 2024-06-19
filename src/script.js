@@ -300,7 +300,7 @@ for (let i = 0; i < 30; i++) {
   gravesGroup.add(grave);
 }
 
-//======================= Lights ========================
+//======================= Lights =========================
 const ambientLight = new THREE.AmbientLight('#86cdff', 0.275);
 scene.add(ambientLight);
 
@@ -311,6 +311,13 @@ scene.add(moonLight);
 const doorLight = new THREE.PointLight('#ff7d46', 5);
 doorLight.position.set(0, 2.2, 2.5);
 houseGroup.add(doorLight);
+
+//======================= Ghosts =========================
+const ghost1 = new THREE.PointLight('#8800ff', 6);
+const ghost2 = new THREE.PointLight('#ff0088', 6);
+const ghost3 = new THREE.PointLight('#ff0000', 6);
+
+scene.add(ghost1, ghost2, ghost3);
 
 //====================== Camera ==========================
 let width = window.innerWidth;
@@ -355,6 +362,35 @@ const timer = new Timer();
 const tick = () => {
   timer.update();
   const elapsedTime = timer.getElapsed();
+
+  //===== Ghost 01
+  const ghost1Angle = elapsedTime * 0.5;
+  ghost1.position.x = Math.cos(ghost1Angle) * 4;
+  ghost1.position.z = Math.sin(ghost1Angle) * 4;
+
+  // Go up and down through the floor in a irregular pattern
+  ghost1.position.y =
+    Math.sin(ghost1Angle) *
+    Math.sin(ghost1Angle * 2.34) *
+    Math.sin(ghost1Angle * 3.45);
+
+  //===== Ghost 02
+  const ghost2Angle = -elapsedTime * 0.38;
+  ghost2.position.x = Math.cos(ghost2Angle) * 5;
+  ghost2.position.z = Math.sin(ghost2Angle) * 5;
+  ghost2.position.y =
+    Math.sin(ghost2Angle) *
+    Math.sin(ghost2Angle * 2.34) *
+    Math.sin(ghost2Angle * 3.45);
+
+  //===== Ghost 03
+  const ghost3Angle = elapsedTime * 0.23;
+  ghost3.position.x = Math.cos(ghost3Angle) * 6.5;
+  ghost3.position.z = Math.sin(ghost3Angle) * 6.5;
+  ghost3.position.y =
+    Math.sin(ghost3Angle) *
+    Math.sin(ghost3Angle * 2.34) *
+    Math.sin(ghost3Angle * 3.45);
 
   controls.update();
   renderer.render(scene, camera);
