@@ -312,6 +312,20 @@ const doorLight = new THREE.PointLight('#ff7d46', 5);
 doorLight.position.set(0, 2.2, 2.5);
 houseGroup.add(doorLight);
 
+const flickerLight = () => {
+  const minIntensity = 0.1;
+  const maxIntensity = 5;
+  const flickerSpeed = 280;
+
+  // Randomly change the light's intensity
+  doorLight.intensity =
+    minIntensity + Math.random() * (maxIntensity - minIntensity);
+
+  // Call this function again after a short delay
+  setTimeout(flickerLight, flickerSpeed);
+};
+flickerLight();
+
 //======================= Ghosts =========================
 const ghost1 = new THREE.PointLight('#8800ff', 6);
 const ghost2 = new THREE.PointLight('#ff0088', 6);
@@ -419,7 +433,7 @@ const tick = () => {
   const elapsedTime = timer.getElapsed();
 
   //== Ghost 01
-  const ghost1Angle = elapsedTime * 0.5;
+  const ghost1Angle = elapsedTime * 0.4;
   ghost1.position.x = Math.cos(ghost1Angle) * 4;
   ghost1.position.z = Math.sin(ghost1Angle) * 4;
 
@@ -430,7 +444,7 @@ const tick = () => {
     Math.sin(ghost1Angle * 3.45);
 
   //== Ghost 02
-  const ghost2Angle = -elapsedTime * 0.38;
+  const ghost2Angle = -elapsedTime * 0.3;
   ghost2.position.x = Math.cos(ghost2Angle) * 5;
   ghost2.position.z = Math.sin(ghost2Angle) * 5;
   ghost2.position.y =
@@ -439,12 +453,12 @@ const tick = () => {
     Math.sin(ghost2Angle * 3.45);
 
   //== Ghost 03
-  const ghost3Angle = elapsedTime * 0.23;
+  const ghost3Angle = elapsedTime * 0.2;
   ghost3.position.x = Math.cos(ghost3Angle) * 6.5;
   ghost3.position.z = Math.sin(ghost3Angle) * 6.5;
   ghost3.position.y =
-    Math.sin(ghost3Angle) *
-    Math.sin(ghost3Angle * 2.34) *
+    Math.cos(ghost3Angle) *
+    Math.cos(ghost3Angle * 2.34) *
     Math.sin(ghost3Angle * 3.45);
 
   controls.update();
