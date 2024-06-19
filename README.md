@@ -20,6 +20,7 @@
 >> ### It is crucial to grasp that the project can be used in:
 >> - The "Gaming" industry could find value in this project for creating immersive and atmospheric ` game environments `.
 >> - The "Entertainment" industry, including ` theme parks ` or ` virtual reality ` experiences, could also benefit from the realistic and spooky atmosphere you have created.
+>> - The "Education" industry, it can be used as an educational tool to teach students about ` 3D modeling `, ` animation `, and ` programming `. It can also be used to create engaging and interactive ` storytelling ` experiences for children.
 >> - Additionally, "Architectural firms" might find inspiration in your 3D design skills for creating unique and engaging building ` models `.
 
 
