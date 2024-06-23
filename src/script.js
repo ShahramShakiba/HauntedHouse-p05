@@ -423,7 +423,7 @@ sky.material.uniforms['mieDirectionalG'].value = 0.95;
 sky.material.uniforms['sunPosition'].value.set(0.3, -0.038, -0.95);
 
 //======================= Fog =========================
-scene.fog = new THREE.FogExp2('#02343f', 0.1);
+scene.fog = new THREE.FogExp2('#02343f', 0.11);
 
 //======================= Sound =========================
 // Listen the audio in the scene
@@ -437,13 +437,16 @@ audioLoader.load('./sound/spooky.mp3', (buffer) => {
   sound.setBuffer(buffer);
   sound.setLoop(true);
   sound.setVolume(0.5);
-  
+
   // Attach sound playback to a user interaction
-  document.addEventListener('click', () => {
+  const playSound = () => {
     if (!sound.isPlaying) {
       sound.play();
     }
-  });
+  };
+
+  document.addEventListener('click', playSound);
+  document.addEventListener('touchstart', playSound);
 });
 
 //==================== Animate ========================
